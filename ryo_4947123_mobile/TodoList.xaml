@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:custom="clr-namespace:ryo_4947123_mobile;assembly=ryo_4947123_mobile"
+	x:Class="ryo_4947123_mobile.TodoList" Title="Azure Todo">
+	<StackLayout Orientation="Vertical" BackgroundColor="#7FBBFF">
+		<!-- トーク履歴表示部分 -->
+		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
+			<ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False" IsEnabled="True" x:Name="syncIndicator" />
+			<ListView x:Name="todoList" ItemSelected="OnSelected" IsPullToRefreshEnabled="true" Refreshing="OnRefresh" HasUnevenRows="true" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#00000000">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<ViewCell.ContextActions>
+								<MenuItem Clicked="OnComplete" Text="Complete" CommandParameter="{Binding .}" />
+							</ViewCell.ContextActions>
+							<StackLayout HorizontalOptions="FillAndExpand">
+								<!-- 本人の投稿表示 -->
+								<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="15,5,15,0" IsVisible="{Binding IsSelf}">
+									<StackLayout Padding="0,0,0,0" VerticalOptions="StartAndExpand" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+										<BoxView HorizontalOptions="StartAndExpand" BackgroundColor="#00000000" />
+										<custom:TalkButton Text="{Binding Text}" FontSize="25" BorderRadius="10" BackgroundColor="Lime" HorizontalOptions="End" MinimumWidthRequest="1" />
+									</StackLayout>
+								</StackLayout>
+								<!-- 他人の投稿表示 -->
+								<StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal" Padding="15,5,15,0" IsVisible="{Binding IsOther}">
+									<StackLayout Padding="0,0,0,0" VerticalOptions="StartAndExpand" Orientation="Vertical" HorizontalOptions="FillAndExpand">
+										<Label TextColor="#ffffff" Text="{Binding UserID}" />
+										<custom:TalkButton Text="{Binding Text}" FontSize="25" BorderRadius="10" BackgroundColor="White" HorizontalOptions="Start" />
+									</StackLayout>
+								</StackLayout>
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+		</StackLayout>
+		<!-- 入力部分 -->
+		<StackLayout BackgroundColor="#5ABAFF" Padding="10,0,10,0" VerticalOptions="End">
+			<Label TextColor="#555555" Text="user1" />
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<Editor x:Name="newItemName" />
+				<StackLayout x:Name="buttonsPanel" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+					<Button Text="+" MinimumHeightRequest="30" Clicked="OnAdd" />
+				</StackLayout>
+			</Grid>
+		</StackLayout>
+	</StackLayout>
+</ContentPage>
