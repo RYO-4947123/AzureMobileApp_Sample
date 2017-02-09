@@ -129,7 +129,7 @@ namespace ryo_4947123_mobile
 
         public async Task SaveTaskAsync(TodoItem item)
         {
-			item.UserID = userid;
+			//item.UserID = userid;
 			item.IsSelf = true;
 
             if (item.Id == null)

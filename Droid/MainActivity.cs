@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using Android.App;
 using Android.Content;
@@ -10,15 +10,19 @@ using Android.OS;
 using Firebase.Messaging;
 using Firebase.Iid;
 using System.Threading.Tasks;
+using ryo_4947123_mobile.Views;
+using Xamarin.Forms;
 
 namespace ryo_4947123_mobile.Droid
 {
 	[Activity (Label = "ryo_4947123_mobile.Droid",
 		Icon = "@drawable/icon",
 		MainLauncher = true,
-		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
-		Theme = "@android:style/Theme.Holo.Light")]
-	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
+		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation
+	    //,Theme = "@android:style/Theme.Holo.Light"
+	    ,Theme = "@style/Theme.AppCompat.Light.NoActionBar"
+	    )]
+	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 
 		protected override void OnCreate (Bundle bundle)
@@ -77,9 +81,10 @@ namespace ryo_4947123_mobile.Droid
 
 			public override void HandleMessage(Message msg)
 			{
-				if (app.MainPage.IsVisible)
+				var navigationPage = (NavigationPage)app.MainPage;
+				if (navigationPage.CurrentPage.IsVisible)
 				{
-					((TodoList)app.MainPage).OnSyncItems(null, null);
+					((TalkPage)navigationPage.CurrentPage).OnSyncItems(null, null);
 				}
 			}
 		}

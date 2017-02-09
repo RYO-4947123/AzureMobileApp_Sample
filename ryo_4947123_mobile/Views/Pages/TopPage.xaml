@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+	prism:ViewModelLocator.AutowireViewModel="True"
+	xmlns:custom="clr-namespace:ryo_4947123_mobile.Views.Controls;assembly=ryo_4947123_mobile"
+	x:Class="ryo_4947123_mobile.Views.TopPage"
+	Title="トップ">
+	<ContentPage.Content>
+	</ContentPage.Content>
+	<StackLayout Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="Lime">
+		<StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+			<StackLayout Orientation="Horizontal">
+				<Label Text="ユーザ名" BackgroundColor="Teal" TextColor="White" MinimumWidthRequest="60" VerticalTextAlignment="Center"/>
+				<Entry x:Name="userID" Placeholder="guest" Text="{Binding UserID}" BackgroundColor="White" HorizontalOptions="FillAndExpand"/>
+			</StackLayout>
+			<Button Text="ログイン" MinimumHeightRequest="30" Command="{Binding LoginCommand}" />
+		</StackLayout>
+	</StackLayout>
+</ContentPage>

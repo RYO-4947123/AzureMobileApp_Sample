@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage 
-	xmlns="http://xamarin.com/schemas/2014/forms" 
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-	xmlns:custom="clr-namespace:ryo_4947123_mobile;assembly=ryo_4947123_mobile"
-	x:Class="ryo_4947123_mobile.TodoList" Title="Azure Todo">
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+	prism:ViewModelLocator.AutowireViewModel="True"
+	xmlns:custom="clr-namespace:ryo_4947123_mobile.Views.Controls;assembly=ryo_4947123_mobile"
+	x:Class="ryo_4947123_mobile.Views.TalkPage"
+	Title="トーク">
 	<StackLayout Orientation="Vertical" BackgroundColor="#7FBBFF">
 		<!-- トーク履歴表示部分 -->
 		<StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand">
@@ -38,7 +41,7 @@
 		</StackLayout>
 		<!-- 入力部分 -->
 		<StackLayout BackgroundColor="#5ABAFF" Padding="10,0,10,0" VerticalOptions="End">
-			<Label TextColor="#555555" Text="user1" />
+			<Label x:Name="currentUserID" TextColor="#555555" Text="{Binding CurrentUserID}" />
 			<Grid>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition />

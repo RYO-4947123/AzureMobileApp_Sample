@@ -3,8 +3,8 @@ using Android.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: Xamarin.Forms.ExportRenderer(typeof(ryo_4947123_mobile.TalkButton), typeof(ryo_4947123_mobile.Droid.TalkButtonRenderer))]
-namespace ryo_4947123_mobile.Droid
+[assembly: Xamarin.Forms.ExportRenderer(typeof(ryo_4947123_mobile.Views.Controls.TalkButton), typeof(ryo_4947123_mobile.Droid.Views.Controls.TalkButtonRenderer))]
+namespace ryo_4947123_mobile.Droid.Views.Controls
 {
 	public class TalkButtonRenderer : Xamarin.Forms.Platform.Android.ButtonRenderer
 	{
@@ -22,6 +22,10 @@ namespace ryo_4947123_mobile.Droid
 			{
 				button.Gravity = GravityFlags.Left;
 				button.SetPadding(10, 10, 10, 10);
+
+				// マテリアルデザイン対応からデフォルトで全て大文字となってしまうので、
+				// 明示的に大文字／小文字を区別するように設定する
+				button.SetAllCaps(false);
 			}
 		}
 	}

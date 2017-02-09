@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 
 using Xamarin.Forms;
 
 namespace ryo_4947123_mobile
 {
-	public class App : Application
+	public class App2 : Application
 	{
-		public App ()
+		public App2 ()
 		{
 			TodoItemManager.DefaultManager.UserID = "user1";
 
 			// The root page of your application
-			MainPage = new TodoList();
+			MainPage = new Views.TalkPage();
 		}
 
 		protected override void OnStart ()

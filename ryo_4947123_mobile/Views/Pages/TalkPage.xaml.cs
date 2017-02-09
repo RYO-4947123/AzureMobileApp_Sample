@@ -2,13 +2,13 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace ryo_4947123_mobile
+namespace ryo_4947123_mobile.Views
 {
-    public partial class TodoList : ContentPage
+    public partial class TalkPage : ContentPage
     {
         TodoItemManager manager;
 
-        public TodoList()
+        public TalkPage()
         {
             InitializeComponent();
 
@@ -27,6 +27,7 @@ namespace ryo_4947123_mobile
 
                 buttonsPanel.Children.Add(syncButton);
             }
+
         }
 
         protected override async void OnAppearing()
@@ -53,7 +54,7 @@ namespace ryo_4947123_mobile
 
 		public async void OnAdd(object sender, EventArgs e)
 		{
-			var todo = new TodoItem { Text = newItemName.Text};
+			var todo = new TodoItem { Text = newItemName.Text, UserID = currentUserID.Text};
             await AddItem(todo);
 
             newItemName.Text = string.Empty;
